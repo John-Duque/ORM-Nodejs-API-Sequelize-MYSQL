@@ -1,0 +1,10 @@
+const path = require('path'); // A merda do import não funciona aqui 
+
+// usando essa parte para que o sequelize ache minhas pastas
+// isso ajuda o sequelize achar a pastas caso eu mude elas de lugar fazendo que ele não se perca 
+module.exports = {
+    'config': path.resolve('./api/config','config.json'),
+    'models-path': path.resolve('./api/models'),
+    'seeders-path':  path.resolve('./api/seeders'),
+    'migrations-path':  path.resolve('./api/migrations')
+}
