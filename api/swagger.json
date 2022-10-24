@@ -1,0 +1,776 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API de consultório",
+    "description": "API para controlar médicos e suas especialidades dentro do consultório.",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/",
+      "description": "API de Teste"
+    }
+  ],
+  "paths": {
+    "/pessoas": {
+      "get": {
+        "tags": [
+          "Pessoas"
+        ],
+        "summary": "Recuperando as pessoas",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pessoas"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "pessoa não recuperada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pessoas"
+        ],
+        "summary": "cria uma nova pessoa",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pessoa-Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "sucesso",
+            "content": {
+              "application": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pessoa"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "pessoa não recuperada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pessoas/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true
+        }
+      ],
+      "get": {
+        "tags": [
+          "Pessoas"
+        ],
+        "summary": "pesquisa somente uma pessoa",
+        "responses": {
+          "200": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pessoa"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "pessoa não recuperada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pessoas"
+        ],
+        "summary": "Atualiza uma pessoa",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pessoa-Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pessoa"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "pessoa não recuperada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pessoas"
+        ],
+        "summary": "Excluir uma pessoa",
+        "responses": {
+          "200": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "example": "id {id} deletado"
+              }
+            }
+          },
+          "404": {
+            "description": "pessoa não foi deletada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/niveis": {
+      "get": {
+        "tags": [
+          "Niveis"
+        ],
+        "summary": "Recuperar todos os Niveis",
+        "responses": {
+          "200": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Niveis"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "pessoa não foi deletada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Niveis"
+        ],
+        "summary": "Cria novo Nivel",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Nivel-Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nivel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/niveis/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true
+        }
+      ],
+      "get": {
+        "tags": [
+          "Niveis"
+        ],
+        "summary": "recuperar somente um nivel",
+        "responses": {
+          "200": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nivel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Niveis"
+        ],
+        "summary": "Atualiza uma pessoa",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Nivel-Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nivel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "nivel não recuperada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Niveis"
+        ],
+        "summary": "Excluir uma nivel",
+        "responses": {
+          "200": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "example": "id {id} deletado"
+              }
+            }
+          },
+          "404": {
+            "description": "nivel não foi deletada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/turmas": {
+      "get": {
+        "tags": [
+          "Turmas"
+        ],
+        "summary": "recuperando as pessoas",
+        "responses": {
+          "200": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Turmas"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Turmas não recuperada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Turmas"
+        ],
+        "summary": "Cria nova turma",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Turmas-Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Turma"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/turmas/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true
+        }
+      ],
+      "get": {
+        "tags": [
+          "Turmas"
+        ],
+        "summary": "recuperar somente uma turma",
+        "responses": {
+          "200": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Turma"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Turmas"
+        ],
+        "summary": "Atualiza uma Turma",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Turmas-Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Turma"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "nivel não recuperada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Turmas"
+        ],
+        "summary": "Excluir uma Turma",
+        "responses": {
+          "200": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "example": "id {id} deletado"
+              }
+            }
+          },
+          "404": {
+            "description": "nivel não foi deletada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pessoas/{estudante_id}/matricula/{matricula_id}": {
+      "parameters": [
+        {
+          "name": "estudante_id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true
+        },
+        {
+          "name": "matricula_id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true
+        }
+      ],
+      "get": {
+        "tags": [
+          "Matriculas"
+        ],
+        "summary": "recuperando as matriculas",
+        "responses": {
+          "200": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Matricula"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Turma não recuperada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Matriculas"
+        ],
+        "summary": "Atualiza uma Matricula",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Matricula-Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Matricula"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "matricula não atualizada"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Matriculas"
+        ],
+        "summary": "Excluir uma matricula",
+        "responses": {
+          "200": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "example": "id {matricula_id} deletado"
+              }
+            }
+          },
+          "404": {
+            "description": "matricula não foi deletada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pessoas/{estudante_id}/matricula": {
+      "parameters": [
+        {
+          "name": "estudante_id",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          },
+          "required": true
+        }
+      ],
+      "post": {
+        "tags": [
+          "Matriculas"
+        ],
+        "summary": "cria uma nova matricula",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Matricula-Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "sucesso",
+            "content": {
+              "application": {
+                "schema": {
+                  "$ref": "#/components/schemas/Matricula"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "matricula não recuperada",
+            "content": {
+              "application/json": {
+                "example": "Not Found"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pessoa": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "ativo": {
+            "type": "boolean"
+          },
+          "email": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Pessoa-Body": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "ativo": {
+            "type": "boolean"
+          },
+          "email": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        }
+      },
+      "Pessoas": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Pessoa"
+        }
+      },
+      "Nivel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "descr_nivel": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Nivel-Body": {
+        "type": "object",
+        "properties": {
+          "descr_nivel": {
+            "type": "string"
+          }
+        }
+      },
+      "Niveis": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Nivel"
+        }
+      },
+      "Turma": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "data_inicio": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "docente_id": {
+            "type": "integer"
+          },
+          "nivel_id": {
+            "type": "integer"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Turmas-Body": {
+        "type": "object",
+        "properties": {
+          "data_inicio": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Turmas": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Turma"
+        }
+      },
+      "Matricula": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "estudante_id": {
+            "type": "integer"
+          },
+          "turma_id": {
+            "type": "integer"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Matricula-Body": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "turma_id": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

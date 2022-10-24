@@ -16,6 +16,7 @@
     "nodemon": "^2.0.20",
     "path": "^0.12.7",
     "sequelize": "^6.24.0",
-    "sequelize-cli": "^6.5.1"
+    "sequelize-cli": "^6.5.1",
+    "swagger-ui-express": "^4.5.0"
   }
 }
